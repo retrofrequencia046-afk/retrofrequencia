@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pague com Pix — RetroFrequência</title>
+  <meta name="theme-color" content="#0B0A09">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Rubik:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="pg-pagamento">
+
+  <main class="pagamento">
+    <div class="pagamento__cartao">
+
+      <header class="atendente">
+        <span class="avatar">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="4" y="14" width="40" height="28" rx="6" fill="#F5EFE6"/>
+            <line x1="14" y1="14" x2="30" y2="4" stroke="#F5EFE6" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="16" cy="28" r="7" fill="#FF7A1A"/>
+            <rect x="28" y="21" width="11" height="4" rx="2" fill="#0B0A09"/>
+            <rect x="28" y="30" width="11" height="4" rx="2" fill="#FF3D7F"/>
+          </svg>
+        </span>
+        <div>
+          <p class="atendente__nome">RetroFrequência</p>
+          <p class="etiqueta etiqueta--mono">Atendimento online</p>
+        </div>
+      </header>
+
+      <h1 class="pagamento__titulo">Pague com Pix</h1>
+
+      <div id="aviso-config" class="aviso" hidden>
+        <strong>Atenção, dono do site:</strong> cole o código Pix Copia e Cola desta playlist no campo <code>pix</code> do arquivo <code>produtos.js</code>. Os clientes não devem ver esta mensagem.
+      </div>
+
+      <div class="resumo">
+        <p class="resumo__produto"><span id="produto-nome">—</span><b id="produto-preco">—</b></p>
+        <ol class="instrucoes">
+          <li>Aperte <b>Copiar Pix</b>.</li>
+          <li>No app do banco, escolha <b>Pix Copia e Cola</b>.</li>
+          <li><b>Cole</b> o código e confirme.</li>
+        </ol>
+      </div>
+
+      <button id="btn-copiar" class="btn btn--comprar btn--pix" type="button">
+        <span id="btn-copiar-texto">Copiar Pix</span>
+      </button>
+      <p id="msg-copiado" class="msg-copiado" role="status" aria-live="polite"></p>
+
+      <textarea id="codigo-pix" class="codigo-pix" readonly rows="2" aria-label="Código Pix Copia e Cola"></textarea>
+
+      <details class="mostrar-qr">
+        <summary>▸ Mostrar QR Code <small>(outro celular)</small></summary>
+        <div class="qr">
+          <div id="qr-code" class="qr__imagem" role="img" aria-label="QR Code do Pix"></div>
+          <p class="qr__legenda">Aponte a câmera de outro celular para este código.</p>
+        </div>
+      </details>
+
+      <!-- LIBERAÇÃO DA PLAYLIST -->
+      <section id="liberar" class="liberar" aria-live="polite" hidden>
+
+        <div id="etapa-espera" class="etapa">
+          <p class="liberar__titulo">Aguardando seu Pix…</p>
+          <p id="espera-texto" class="liberar__texto">Faça o pagamento no app do banco. O acesso libera em <b id="contador">0:50</b>.</p>
+          <div class="barra" aria-hidden="true"><span id="barra-progresso"></span></div>
+          <button id="btn-paguei" class="btn btn--comprar" type="button" disabled>Acessar minha playlist</button>
+        </div>
+
+        <div id="etapa-processando" class="etapa processando" hidden>
+          <svg class="fitinha" viewBox="0 0 120 76" aria-hidden="true">
+            <rect x="2" y="2" width="116" height="72" rx="9" fill="#1F1B18" stroke="#FF7A1A" stroke-width="3"/>
+            <rect x="14" y="10" width="92" height="18" rx="4" fill="#F5EFE6"/>
+            <rect x="30" y="38" width="60" height="26" rx="13" fill="#3A332D"/>
+            <g class="carretel" style="transform-origin:44px 51px"><circle cx="44" cy="51" r="10" fill="#F5EFE6"/><rect x="42.5" y="42" width="3" height="18" fill="#1F1B18"/><rect x="35" y="49.5" width="18" height="3" fill="#1F1B18"/></g>
+            <g class="carretel" style="transform-origin:76px 51px"><circle cx="76" cy="51" r="10" fill="#F5EFE6"/><rect x="74.5" y="42" width="3" height="18" fill="#1F1B18"/><rect x="67" y="49.5" width="18" height="3" fill="#1F1B18"/></g>
+          </svg>
+          <p id="processando-texto" class="liberar__titulo">Preparando sua playlist…</p>
+          <ul class="passos-proc">
+            <li id="proc-1">Recebendo seu pedido</li>
+            <li id="proc-2">Separando as músicas</li>
+            <li id="proc-3">Gerando seu link</li>
+          </ul>
+        </div>
+
+        <div id="etapa-pronto" class="etapa pronto" hidden>
+          <p class="pronto__selo">✓ Sua playlist está pronta!</p>
+          <p class="liberar__texto">Aperte o botão verde para ouvir agora no Spotify. Guarde o link para ouvir outras vezes.</p>
+          <a id="btn-spotify" class="btn btn--spotify" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm4.6 14.4a.6.6 0 0 1-.9.2c-2.4-1.5-5.4-1.8-9-1a.6.6 0 1 1-.3-1.2c3.9-.9 7.2-.5 9.9 1.1a.6.6 0 0 1 .3.9Zm1.2-2.7a.8.8 0 0 1-1.1.3c-2.7-1.7-6.9-2.2-10.2-1.2a.8.8 0 0 1-.5-1.5c3.7-1.1 8.3-.6 11.5 1.3a.8.8 0 0 1 .3 1.1Zm.1-2.8C14.7 9 9.4 8.8 6.3 9.7a.9.9 0 1 1-.5-1.8c3.5-1.1 9.4-.9 13.1 1.3a.9.9 0 0 1-.9 1.6Z"/></svg>
+            <span>Abrir no Spotify</span>
+          </a>
+          <label for="link-playlist" class="pagamento__rotulo">Link da sua playlist</label>
+          <textarea id="link-playlist" class="link-playlist" rows="2" readonly></textarea>
+          <button id="btn-copiar-link" class="btn btn--contorno" type="button">Copiar link</button>
+          <p id="msg-link" class="msg-copiado" role="status"></p>
+        </div>
+
+      </section>
+
+      <p class="status">Algum problema? Fale com a gente no <a class="js-direct" href="#">Direct do Instagram</a>.</p>
+
+      <hr class="divisor">
+
+      <details class="sobre">
+        <summary>Sobre seu acesso</summary>
+        <p>A playlist abre no Spotify, pelo celular ou computador. Depois de fazer o Pix, aguarde cerca de 1 minuto e aperte “Acessar minha playlist”: o link aparece aqui na tela. Qualquer dúvida, chame no Direct do Instagram.</p>
+      </details>
+
+      <a class="voltar" href="index.html#vitrine">← Voltar à loja</a>
+    </div>
+  </main>
+
+  <script src="produtos.js"></script>
+  <script src="qrcode.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
