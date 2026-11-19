@@ -15,7 +15,7 @@ const LOJA = {
   // Painel de estatísticas (Umami Cloud — grátis).
   // Crie a conta em cloud.umami.is, adicione o site e cole aqui
   // o "Website ID" (um código longo com traços). Deixe "" para desligar.
-  umami: ""
+  umami: "1e4ad65c-643e-4da4-a92f-ac5ceaf6193f"
 };
 
 /* ---------------------------------------------------------
