@@ -9,6 +9,7 @@
   // Abre a conversa (Direct) com o perfil da loja no Instagram
   const linkDirect = "https://ig.me/m/" + LOJA.instagram;
   const linkPerfil = "https://instagram.com/" + LOJA.instagram;
+  const linkMessenger = LOJA.messenger ? "https://m.me/" + LOJA.messenger : linkDirect;
 
   function capaSVG(p) {
     const [c1, c2] = p.cores || ["#FF7A1A", "#FF3D7F"];
@@ -77,6 +78,10 @@
   document.querySelectorAll(".js-direct").forEach((a) => {
     a.href = linkDirect; a.target = "_blank"; a.rel = "noopener";
   });
+  document.querySelectorAll(".js-messenger").forEach((a) => {
+    a.href = linkMessenger; a.target = "_blank"; a.rel = "noopener";
+    a.addEventListener("click", () => contar("pediu-ajuda-messenger"));
+  });
   document.querySelectorAll(".js-perfil").forEach((a) => {
     a.href = linkPerfil; a.target = "_blank"; a.rel = "noopener";
   });
@@ -91,28 +96,28 @@
   if (lista) {
     const ordenados = [...PRODUTOS].sort((a, b) => (b.destaque ? 1 : 0) - (a.destaque ? 1 : 0));
     lista.innerHTML = ordenados.map((p, i) => `
-      <article class="card card--cor${i % 2}${p.destaque ? " card--destaque" : ""}">
+      <article class="card card--v2 card--cor${i % 2}${p.destaque ? " card--destaque" : ""}">
         ${p.selo ? `<span class="card__selo">${p.selo}</span>` : ""}
         <div class="card__topo">
           <div class="card__thumb">${capaMini(p)}</div>
           <div class="card__info">
-            <h3 class="card__nome">${p.nome}</h3>
+            <h2 class="card__nome">${p.nome}</h2>
             <p class="card__sub">${p.subtitulo || ""}</p>
-            <p class="card__qtd2">🎵 ${p.musicas} músicas</p>
-            <p class="card__preco">${formatarPreco(p.preco)}</p>
+            <p class="card__preco">${formatarPreco(p.preco)} <small>no Pix</small></p>
           </div>
         </div>
         <div class="card__corpo">
-          <a class="btn btn--comprar" href="pagamento.html?produto=${encodeURIComponent(p.id)}">Comprar <span aria-hidden="true">↗</span></a>
-          <a class="btn btn--contorno-insta" target="_blank" rel="noopener" href="${linkDirect}">Atendimento via Instagram</a>
-          <p class="card__nota">🛡️ Pix · link liberado na tela</p>
-          <p class="card__spotify"><span class="spotify-ponto" aria-hidden="true"></span>Playlist no Spotify</p>
+          ${p.destaques ? `
+          <div class="faixas">
+            <p class="faixas__titulo">Algumas das ${p.musicas} músicas:</p>
+            <ul class="faixas__lista">${p.destaques.map(([m, a]) => `<li><b>${m}</b> <span>${a}</span></li>`).join("")}</ul>
+            <p class="faixas__mais">+ ${p.musicas - p.destaques.length} outros sucessos</p>
+          </div>` : ""}
+          <a class="btn btn--comprar" href="pagamento.html?produto=${encodeURIComponent(p.id)}">Quero esta playlist</a>
+          <p class="card__spotify"><span class="spotify-ponto" aria-hidden="true"></span>Link na hora · ouça no Spotify</p>
           <details class="card__det">
-            <summary>Ver detalhes da playlist</summary>
-            <div class="card__banner">${capaSVG(p)}</div>
-            <p class="card__cat">${p.categoria || "Anos 80"}</p>
+            <summary>Ver detalhes</summary>
             <p class="card__desc">${p.descricao}</p>
-            <ul class="card__estilos">${p.estilos.map((e) => `<li>${e}</li>`).join("")}</ul>
             <p>${p.musicas} músicas para ouvir no Spotify, pelo celular ou computador. Depois do Pix, o link aparece na tela com um botão para abrir no Spotify.</p>
           </details>
         </div>
@@ -123,7 +128,6 @@
   document.querySelectorAll(".card").forEach((card) => {
     const nome = card.querySelector(".card__nome").textContent;
     card.querySelector(".btn--comprar").addEventListener("click", () => contar("clicou-comprar", nome));
-    card.querySelector(".btn--contorno-insta").addEventListener("click", () => contar("pediu-ajuda-instagram", nome));
     card.querySelector(".card__det").addEventListener("toggle", (e) => { if (e.target.open) contar("viu-detalhes", nome); });
   });
 

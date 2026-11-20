@@ -35,51 +35,25 @@
 
   <main>
 
-    <!-- ABERTURA COMPACTA -->
-    <section class="hero">
+    <!-- ABERTURA -->
+    <section class="hero hero--v2">
       <h1 class="hero__titulo">
         <span>As músicas</span>
         <span class="destaque">da sua vida.</span>
       </h1>
-      <div class="hero__arte">
-        <svg viewBox="0 0 200 200" role="img" aria-label="Rádio toca-fitas antigo diante de um pôr do sol">
-          <defs>
-            <linearGradient id="sol" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#FFC24B"/>
-              <stop offset=".55" stop-color="#FF7A1A"/>
-              <stop offset="1" stop-color="#FF3D7F"/>
-            </linearGradient>
-            <clipPath id="solClip"><rect width="200" height="112"/></clipPath>
-          </defs>
-          <rect width="200" height="200" fill="#0B0A09"/>
-          <g clip-path="url(#solClip)">
-            <circle cx="100" cy="112" r="72" fill="url(#sol)"/>
-            <rect x="20" y="70" width="160" height="5" fill="#0B0A09"/>
-            <rect x="20" y="85" width="160" height="6" fill="#0B0A09"/>
-            <rect x="20" y="100" width="160" height="8" fill="#0B0A09"/>
-          </g>
-          <line x1="62" y1="104" x2="118" y2="70" stroke="#F5EFE6" stroke-width="4" stroke-linecap="round"/>
-          <rect x="26" y="104" width="148" height="80" rx="12" fill="#F5EFE6"/>
-          <rect x="33" y="111" width="134" height="66" rx="8" fill="#1F1B18"/>
-          <circle cx="58" cy="144" r="20" fill="#3A332D"/><circle cx="58" cy="144" r="12" fill="#FF7A1A"/><circle cx="58" cy="144" r="4" fill="#0B0A09"/>
-          <circle cx="142" cy="144" r="20" fill="#3A332D"/><circle cx="142" cy="144" r="12" fill="#FF3D7F"/><circle cx="142" cy="144" r="4" fill="#0B0A09"/>
-          <rect x="84" y="124" width="32" height="22" rx="4" fill="#F5EFE6"/>
-          <circle cx="93" cy="135" r="4" fill="#1F1B18"/><circle cx="107" cy="135" r="4" fill="#1F1B18"/>
-          <rect x="85" y="154" width="8" height="9" rx="2" fill="#FFC24B"/><rect x="96" y="154" width="8" height="9" rx="2" fill="#F5EFE6"/><rect x="107" y="154" width="8" height="9" rx="2" fill="#F5EFE6"/>
-        </svg>
-      </div>
+      <p class="hero__sub">Os sucessos dos anos 80 já separados para você. É só pagar no Pix e apertar o play.</p>
     </section>
 
-    <!-- FAIXA DE CONFIANÇA (estática) -->
-    <div class="faixa" aria-label="Vantagens">
-      <span>Pix</span><i aria-hidden="true">✦</i><span>Compra segura</span><i aria-hidden="true">✦</i><span>Ajuda no Insta</span>
-    </div>
-
     <!-- VITRINE -->
-    <section id="vitrine" class="vitrine-sec" aria-labelledby="vitrine-titulo">
-      <p class="etiqueta">Vitrine RetroFrequência</p>
-      <h2 id="vitrine-titulo" class="titulo-grande">Escolha sua <span class="destaque">playlist.</span></h2>
+    <section id="vitrine" class="vitrine-sec vitrine-sec--v2" aria-label="Playlists à venda">
       <div id="lista-produtos" class="vitrine"></div>
+      <div class="ajuda-faixa">
+        <p>Ficou com dúvida? Fale com a gente:</p>
+        <div class="ajuda-faixa__botoes">
+          <a class="btn-ajuda btn-ajuda--msg js-messenger" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.4 2 2 6.1 2 11.6c0 2.9 1.2 5.4 3.2 7.1V22l2.9-1.6c1.2.3 2.5.5 3.9.5 5.6 0 10-4.1 10-9.6S17.6 2 12 2Zm1 12.9-2.5-2.7-5 2.7 5.5-5.8 2.6 2.7 4.9-2.7-5.5 5.8Z"/></svg>Messenger</a>
+          <a class="btn-ajuda btn-ajuda--insta js-direct" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>Instagram</a>
+        </div>
+      </div>
     </section>
 
     <!-- COMO FUNCIONA -->
@@ -97,7 +71,7 @@
       <h2 id="duvidas" class="titulo-medio">Dúvidas</h2>
       <details class="faq">
         <summary>Preciso instalar algum aplicativo?</summary>
-        <p>A playlist abre no Spotify. Se você já tem o aplicativo, é só tocar no link. Se não tem, dá para ouvir pelo navegador ou instalar o Spotify grátis. A gente ajuda pelo Instagram.</p>
+        <p>A playlist abre no Spotify. Se você já tem o aplicativo, é só tocar no link. Se não tem, dá para ouvir pelo navegador ou instalar o Spotify grátis. A gente ajuda pelo Messenger ou Instagram.</p>
       </details>
       <details class="faq">
         <summary>Como recebo minha playlist?</summary>
@@ -109,7 +83,7 @@
       </details>
       <details class="faq">
         <summary>Paguei e não recebi, e agora?</summary>
-        <p>Fique tranquilo! Chame a gente no Direct do Instagram com o comprovante do Pix que mandamos o link.</p>
+        <p>Fique tranquilo! Chame a gente no Messenger ou no Direct do Instagram com o comprovante do Pix que mandamos o link.</p>
       </details>
     </section>
 

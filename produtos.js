@@ -15,7 +15,11 @@ const LOJA = {
   // Painel de estatísticas (Umami Cloud — grátis).
   // Crie a conta em cloud.umami.is, adicione o site e cole aqui
   // o "Website ID" (um código longo com traços). Deixe "" para desligar.
-  umami: "1e4ad65c-643e-4da4-a92f-ac5ceaf6193f"
+  umami: "1e4ad65c-643e-4da4-a92f-ac5ceaf6193f",
+
+  // Página do Facebook (número do perfil) para o atendimento pelo
+  // Messenger. Quem vem do Facebook já está logado e a conversa abre na hora.
+  messenger: "61575253081769"
 };
 
 /* ---------------------------------------------------------
@@ -31,35 +35,51 @@ const LOJA = {
    --------------------------------------------------------- */
 const PRODUTOS = [
   {
-    id: "rock-dance-80",
-    nome: "Rock Dance 80's",
-    subtitulo: "Hits de Balada",
-    descricao: "Os maiores sucessos dançantes dos anos 80: rock, pop e synth que embalaram as festas do mundo todo.",
-    categoria: "Anos 80 · Dance",
-    musicas: 30,
-    estilos: ["Rock", "Pop", "Synth"],
-    preco: 9.90,
-    selo: "Lançamento",
-    destaque: true,
-    cores: ["#FF7A1A", "#C2185B"],
-    capaTexto: "80's",
-    spotify: "https://open.spotify.com/playlist/7ntfqs3bdle0iahld7cazm",
-    pix: "00020126580014BR.GOV.BCB.PIX0136aaf307f0-12fc-4549-8e68-ba3ef29b68df52040000530398654049.905802BR5921Nycolau Alves Taborda6009SAO PAULO62140510fAryPPa9vj6304A23A"
-  },
-  {
     id: "nacional-80",
     nome: "Nacional 80's",
-    subtitulo: "Nostalgia Brasileira",
+    subtitulo: "Os sucessos do rádio brasileiro",
     descricao: "Os sucessos nacionais que marcaram os anos 80, para relembrar os bons tempos com as músicas que tocavam no rádio.",
     categoria: "Anos 80 · Nacional",
     musicas: 36,
     estilos: ["Nacional", "Anos 80", "Nostalgia"],
     preco: 9.95,
-    selo: "Novidade",
-    destaque: false,
+    selo: "Nacional",
+    destaque: true,
     cores: ["#1E9E5A", "#E0A800"],
     capaTexto: "BR 80's",
+    destaques: [
+      ["Menina Veneno", "Ritchie"],
+      ["Codinome Beija-Flor", "Cazuza"],
+      ["Bete Balanço", "Barão Vermelho"],
+      ["Como Eu Quero", "Kid Abelha"],
+      ["Dona", "Roupa Nova"],
+      ["Camila, Camila", "Nenhum de Nós"]
+    ],
     spotify: "https://open.spotify.com/playlist/5CUR00OKcZA58rsEtQEFoY",
     pix: "00020126580014BR.GOV.BCB.PIX0136aaf307f0-12fc-4549-8e68-ba3ef29b68df52040000530398654049.955802BR5921Nycolau Alves Taborda6009SAO PAULO62140510RtWPB1OXQd63040598"
+  },
+  {
+    id: "rock-dance-80",
+    nome: "Rock Dance 80's",
+    subtitulo: "Sucessos internacionais de balada",
+    descricao: "Os maiores sucessos dançantes dos anos 80: rock, pop e synth que embalaram as festas do mundo todo.",
+    categoria: "Anos 80 · Dance",
+    musicas: 30,
+    estilos: ["Rock", "Pop", "Synth"],
+    preco: 9.90,
+    selo: "Internacional",
+    destaque: false,
+    cores: ["#FF7A1A", "#C2185B"],
+    capaTexto: "80's",
+    destaques: [
+      ["Take on Me", "a-ha"],
+      ["Footloose", "Kenny Loggins"],
+      ["Sweet Dreams", "Eurythmics"],
+      ["I Want to Break Free", "Queen"],
+      ["Wake Me Up Before You Go-Go", "Wham!"],
+      ["Physical", "Olivia Newton-John"]
+    ],
+    spotify: "https://open.spotify.com/playlist/7ntfqs3bdle0iahld7cazm",
+    pix: "00020126580014BR.GOV.BCB.PIX0136aaf307f0-12fc-4549-8e68-ba3ef29b68df52040000530398654049.905802BR5921Nycolau Alves Taborda6009SAO PAULO62140510fAryPPa9vj6304A23A"
   }
 ];

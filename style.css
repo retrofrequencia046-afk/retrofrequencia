@@ -383,3 +383,43 @@ main { overflow-x: clip; }
 .sobre summary { min-height: 40px; font-size: 1rem; }
 .voltar { min-height: 44px; font-size: 1.1rem; }
 .divisor { display: none; }
+
+/* ---------- v2: abertura curta + vitrine com músicas ---------- */
+.hero--v2 { display: block; padding: .9rem 1rem .2rem; }
+.hero--v2 .hero__titulo { font-size: clamp(1.6rem, 7.4vw, 2.6rem); }
+.hero__sub { margin-top: .55rem; color: var(--texto-2); font-size: 1.1rem; line-height: 1.4; }
+.vitrine-sec--v2 { padding-top: .9rem; }
+.vitrine-sec--v2 .vitrine { gap: 1.25rem; }
+
+.card--v2 .card__topo { padding: 1.6rem .9rem 0; }
+.card--v2 .card__thumb { width: 78px; }
+.card--v2 .card__sub { font-family: var(--fonte-texto); font-weight: 400; font-size: 1rem; color: var(--texto-2); }
+.card--v2 .card__preco { font-size: 1.9rem; }
+.card--v2 .card__preco small { font-size: 1rem; }
+.card--v2 .card__corpo { gap: .65rem; padding-top: .75rem; }
+
+.faixas { background: var(--fundo-2); border: 2px solid var(--linha); border-radius: 18px; padding: .75rem .9rem .7rem; }
+.faixas__titulo { font-size: .95rem; color: var(--texto-2); margin-bottom: .35rem; }
+.faixas__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem; }
+.faixas__lista li { line-height: 1.25; font-size: 1.08rem; padding-left: 1.3rem; position: relative; }
+.faixas__lista li::before { content: "♪"; position: absolute; left: 0; color: var(--cor); font-weight: 700; }
+.faixas__lista b { color: var(--texto); }
+.faixas__lista span { color: #9C9288; font-size: .95rem; white-space: nowrap; }
+.faixas__mais { margin-top: .4rem; font-weight: 700; color: var(--cor); font-size: 1rem; }
+
+.card--v2 .card__spotify { margin-top: -.2rem; font-size: .95rem; }
+.card--v2 .card__det { padding-top: .6rem; }
+
+.ajuda-faixa { margin-top: 1.4rem; text-align: center; }
+.ajuda-faixa p { color: var(--texto-2); font-size: 1.05rem; margin-bottom: .6rem; }
+.ajuda-faixa__botoes { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+.btn-ajuda {
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 56px; border-radius: 999px; text-decoration: none;
+  font-family: var(--fonte-titulo); font-weight: 700; font-size: 1.1rem; color: #fff;
+}
+.btn-ajuda svg { width: 24px; height: 24px; flex: none; }
+.btn-ajuda--msg { background: #0866FF; }
+.btn-ajuda--insta { background: linear-gradient(45deg, #F58529, #DD2A7B 55%, #8134AF); }
+.status__botoes { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-top: .6rem; }
+.status .btn-ajuda { color: #fff; }
